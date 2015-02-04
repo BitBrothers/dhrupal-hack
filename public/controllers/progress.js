@@ -4,7 +4,7 @@ angular.module('GoaHack')
   if($rootScope.currentUser){
     Progress.get(function(data){
       $scope.status = data;
-      if($scope.status.team_status && $scope.status.ps_status && $scope.status.payment_status && $scope.status.member_status)
+      if($scope.status.team_status && $scope.status.ps_status &&  $scope.status.member_status)
       $scope.ready = true;
     });
   }

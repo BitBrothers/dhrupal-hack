@@ -64,7 +64,15 @@ exports.postEventRegister = function(req, res, next) {
                             event.save(function(err) {
                                 if (err) res.send(err);
                                 else {
-                                   next();
+                                   if(req.user && req.token){
+                                      res.json({
+                                         user: req.user,
+                                         token: req.token
+                                      });
+                                    }
+                                    else{
+                                      res.sendStatus(200);
+                                    }
                                 }
 
                             });

@@ -27,15 +27,11 @@ angular.module('GoaHack')
       function(user) {
 
         $scope.user = user;
-        console.log($scope.user);
       });
 
-    //  console.log($routeParams.slug);
-    //  console.log($scope.skill);
     //$scope.employers=$scope.user.profile.employers;
 
     $scope.update = function() {
-      console.log($scope.user.profile.skills);
       User.update({
         name: $scope.user.profile.name,
         nameFull: $scope.user.profile.nameFull,
@@ -54,7 +50,6 @@ angular.module('GoaHack')
           duration: 5
         });
         $location.path('/userprofile/'+$routeParams.slug);
-        console.log($routeParams.slug);
       },
       function(data){
         $alert({
@@ -78,7 +73,6 @@ angular.module('GoaHack')
     //     });
     //   } else {
     //     var file = $scope.files[0];
-    //     console.log($scope.files);
     //     $scope.upload = $upload.upload({
     //       url: '/api/user/upload', // upload.php script, node.js route, or servlet url
     //       method: 'PUT',
@@ -94,11 +88,9 @@ angular.module('GoaHack')
 
     //     }).progress(function(evt) {
     //       ngProgress.start();
-    //       console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :' + evt.config.file.name);
     //     }).success(function(data, status, headers, config) {
     //       // file is uploaded successfully
     //       ngProgress.complete();
-    //       console.log('file ' + config.file.name + 'is uploaded successfully. Response: ' + data);
     //       $alert({
     //         content: 'Your image was successfuly updated.',
     //         placement: 'right',
@@ -107,7 +99,6 @@ angular.module('GoaHack')
     //       });
     //       $scope.user.profile.picture = data.user.profile.picture+'?decache='+Math.floor(Math.random()*1000);
     //     }).error(function(data) {
-    //       console.log(data);
     //       $alert({
     //         content: 'There was an error please try again later.',
     //         placement: 'right',
@@ -139,7 +130,6 @@ angular.module('GoaHack')
     uploader.filters.push({
         name: 'imageFilter',
         fn: function(item /*{File|FileLikeObject}*/, options) {
-          console.log(item);
           var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
           if ('|jpg|png|jpeg|bmp|gif|'.indexOf(type) == -1) {
             $alert({
@@ -209,21 +199,15 @@ angular.module('GoaHack')
     };
  
     uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-        console.info('onWhenAddingFileFailed', item, filter, options);
     };
     uploader.onAfterAddingAll = function(addedFileItems) {
         $scope.imageCrop = !$scope.imageCrop;
-        console.log($scope.imageCrop);
-        console.info('onAfterAddingAll', addedFileItems);
     };
     uploader.onProgressItem = function(fileItem, progress) {
-        console.info('onProgressItem', fileItem, progress);
     };
     uploader.onProgressAll = function(progress) {
-        console.info('onProgressAll', progress);
     };
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-      console.info('onSuccessItem', fileItem, response, status, headers);
       $alert({
         content: "Your image was successfuly updated.",
         placement: 'right',
@@ -235,7 +219,6 @@ angular.module('GoaHack')
       uploader.clearQueue();
     };
     uploader.onErrorItem = function(fileItem, response, status, headers) {
-      console.info('onErrorItem', fileItem, response, status, headers);
       $alert({
         content: "There was an error please try again later.",
         placement: 'right',
@@ -245,16 +228,12 @@ angular.module('GoaHack')
       uploader.clearQueue();
     };
     uploader.onCancelItem = function(fileItem, response, status, headers) {
-        console.info('onCancelItem', fileItem, response, status, headers);
     };
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
-        console.info('onCompleteItem', fileItem, response, status, headers);
     };
     uploader.onCompleteAll = function() {
-        console.info('onCompleteAll');
     };
  
-    console.info('uploader', uploader);
  
 
     var root = document.querySelector('#chooseFilesButtons').createShadowRoot();

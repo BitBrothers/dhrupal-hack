@@ -2354,4 +2354,31 @@ only screen and (min-device-pixel-ratio : 1.5) {
 }
 /*Team list css end*/
 
+//colors
+//$red: #f00;
+
+//fonz > input {
+//  visibility: hidden;
+ // position: absolute;
+ // + img {
+ //   cursor: pointer;
+ //   border: 2px solid transparent;
+  //}
+  //&:checked + img {
+  //  border: 2px solid $red;
+ // }
+//}
+
+.fonz > input{ /* HIDE RADIO */
+  display:none;
+}
+.fonz > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+  width:75px;
+}
+.fonz > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+
 

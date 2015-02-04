@@ -16,7 +16,10 @@ var teamSchema = new mongoose.Schema({
   ps_status: {type: Boolean, default:false},
   member_status: {type:Boolean, default:false},
   emails: [String],
-
+  class : {
+    name: String,
+    pic: String,
+  },
   members: [{
     _id : {type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     }],

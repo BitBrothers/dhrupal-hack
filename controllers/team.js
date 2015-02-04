@@ -102,6 +102,8 @@ exports.createTeam = function(req, res, next) {
   team.eventSlug = req.params.eslug;
   team.admin = req.user._id;
   team.teamPic = 'https://s3-us-west-2.amazonaws.com/codejedi/events/goa-hack/goa-hackteam-image';
+  team.class.name = req.body.className;
+  team.class.pic = req.body.classPic;
   team.slug = slugify(req.body.name);
 
   team.members.push({
@@ -144,16 +146,19 @@ exports.createTeam = function(req, res, next) {
                     else {
                       project.save(function(err) {
                         if (err) {
-                          console.log(err);
                           return res.send(err);
                         } else {
-                            req.create = true;
-                            req.to = newUser.email;
-                            req.subject = 'Goa-Hack Team Created';
-                            req.email = 'You have succesfully created the team in Goa-Hack.   \nTeam name:'+ newTeam.name+
-                            '\n Link to team page : http://goahack.com/team/'+ newTeam.slug;
-                            req.team = newTeam;
-                            next();
+                          res.json({
+                            team: newTeam,
+                            message: 'project and team created and user plus event data saved'
+                          });
+                            // req.create = true;
+                            // req.to = newUser.email;
+                            // req.subject = 'Goa-Hack Team Created';
+                            // req.email = 'You have succesfully created the team in Goa-Hack.   \nTeam name:'+ newTeam.name+
+                            // '\n Link to team page : http://goahack.com/team/'+ newTeam.slug;
+                            // req.team = newTeam;
+                            // next();
                           
                         }
 
@@ -186,7 +191,6 @@ exports.createTeam = function(req, res, next) {
 };
 
 exports.getallTeams = function(req, res) {
-  console.log('Get all teams');
   Team.find({
     eventSlug: req.params.eslug,
     status: 'Un-approved' /*member count search filter???maybe hide in angular*/
@@ -208,8 +212,6 @@ exports.getallTeams = function(req, res) {
 };
 
 exports.searchTeamSlug = function(req, res) {
-
-console.log('Reached get team by slug');
   Team.findOne({
       eventSlug: req.params.eslug,
       slug: req.params.tslug
@@ -266,13 +268,11 @@ exports.deleteTeam = function(req, res, next) {
             event.save(function(err) {
               if (err) res.send(err);
               else {
-                console.log(team.problemStatement);
                 Project.remove({
                   _id: team.problemStatement
                 }, function(err) {
                   if (err) res.send(err);
                   else {
-                    console.log(team);
                     for (var i = team.members.length - 1; i >= 0; i--) {
 
                       User.findById(team.members[i]._id, function(err, user) {
@@ -312,7 +312,6 @@ exports.deleteTeam = function(req, res, next) {
 };
 
 exports.applyTeam = function(req, res) {
-  console.log("Apply reached");
   Team.findOne({
     eventSlug: req.params.eslug,
     slug: req.params.tslug
@@ -398,7 +397,6 @@ exports.postUpdate = function(req, res, next) {
         } else {
           if (team.members.id(req.user._id)) {
             if (team.admin.equals(req.user._id)) {
-              console.log(event._id);
               req.eventId = event._id;
               next();
             } else {
@@ -500,13 +498,17 @@ exports.approveMember = function(req, res, next) {
                     user.save(function(err, updatedUser) {
                       if (err) res.send(err);
                       else {
-                        req.approve = true;
-                        req.to = updatedUser.email;
-                        req.subject = 'Goa-Hack Team Approval';
-                        req.email = 'You have been succesfully approved to Goa-Hack Team:'+ updatedTeam.name+
-                        '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug;
-                        req.team = updatedTeam;
-                        next();
+                        res.json({
+                          team: updatedTeam,
+                          message: 'Member Approved and Added'
+                        });
+                        // req.approve = true;
+                        // req.to = updatedUser.email;
+                        // req.subject = 'Goa-Hack Team Approval';
+                        // req.email = 'You have been succesfully approved to Goa-Hack Team:'+ updatedTeam.name+
+                        // '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug;
+                        // req.team = updatedTeam;
+                        // next();
 
                       }
                     });
@@ -562,37 +564,38 @@ exports.inviteMember = function(req, res, next) {
         if (err) res.send(err);
         else {
           if(!user){
-            console.log('!usr');
-            if(team.emails.length >= 3){
-              res.status(500).send('Cant send more email invites');
-            }
-            else{
-              var status = false;
-              for (var i = team.emails.length - 1; i >= 0; i--) {
-                if(team.emails[i] == req.body.invite){
-                  status = true;
-                }
-              };
-              if(status){
-                res.status(500).send('invite has already been sent');
-              }
-              else{
-                team.emails.push(req.body.invite);
-                team.save(function(err){
-                  if(err)
-                    res.send(err);
-                  else{
-                    req.invite2 = true;
-                    req.to = req.body.invite;
-                    req.subject = 'Goa-Hack Team Invitation';
-                    req.email = 'You have recieved a Goa-Hack Team Invitation from Team:'+ team.name +
-                    '\n Link to team page : http://goahack.com/team/'+ team.slug;
-                    req.team = team;
-                    next();
-                  }
-                });
-              }
-            }
+            res.status(500).send('User not joined Dhrupal Hack Yet');
+            // if(team.emails.length >= 3){
+            //   res.status(500).send('Cant send more email invites');
+            // }
+            // else{
+            //   var status = false;
+            //   for (var i = team.emails.length - 1; i >= 0; i--) {
+            //     if(team.emails[i] == req.body.invite){
+            //       status = true;
+            //     }
+            //   };
+            //   if(status){
+            //     res.status(500).send('invite has already been sent');
+            //   }
+            //   else{
+            //     team.emails.push(req.body.invite);
+            //     team.save(function(err){
+            //       if(err)
+            //         res.send(err);
+            //       else{
+
+            //         // req.invite2 = true;
+            //         // req.to = req.body.invite;
+            //         // req.subject = 'Goa-Hack Team Invitation';
+            //         // req.email = 'You have recieved a Goa-Hack Team Invitation from Team:'+ team.name +
+            //         // '\n Link to team page : http://goahack.com/team/'+ team.slug;
+            //         // req.team = team;
+            //         // next();
+            //       }
+            //     });
+            //   }
+            // }
             
 
           }
@@ -613,13 +616,17 @@ exports.inviteMember = function(req, res, next) {
                   user.save(function(err, updatedUser) {
                     if (err) res.send(err);
                     else {
-                        req.invite = true;
-                        req.to = updatedUser.email;
-                        req.subject = 'Goa-Hack Team Invitation';
-                        req.email = 'You have recieved a Goa-Hack Team Invitation from Team:'+ updatedTeam.name +
-                       '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug;
-                        req.team = updatedTeam;
-                        next();
+                      res.json({
+                          team: updatedTeam,
+                          message: 'User invited....awaiting confirmation'
+                      });
+                       //  req.invite = true;
+                       //  req.to = updatedUser.email;
+                       //  req.subject = 'Goa-Hack Team Invitation';
+                       //  req.email = 'You have recieved a Goa-Hack Team Invitation from Team:'+ updatedTeam.name +
+                       // '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug;
+                       //  req.team = updatedTeam;
+                       //  next();
 
                     }
                   });
@@ -670,7 +677,6 @@ exports.postAcceptInvite = function(req, res, next){
                 _id: team._id
               });
               if (req.body.result == 'false') {
-                console.log('Reached Reject');
                 team.save(function(err) {
                   if (err) res.send(err);
                   else {
@@ -746,13 +752,22 @@ exports.acceptInvite = function(req, res, next) {
                     user.save(function(err, updatedUser) {
                       if (err) res.send(err);
                       else {
-                        req.accept = true;
-                        req.subject = 'Goa-Hack Team Invite Accepted';
-                        req.to = updatedUser.email;
-                        req.user = updatedUser;
-                        req.email ='You have succesfully accepted the Invitation to Goa-Hack team '+ updatedTeam.name+
-                        '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug; 
-                        next();
+                        var tempy ={
+                          _id: updatedUser._id,
+                          profile: updatedUser.profile,
+                          events: updatedUser.events
+                        };
+                        res.json({
+                          user: tempy,
+                          message: 'Team joined'
+                        });
+                        // req.accept = true;
+                        // req.subject = 'Goa-Hack Team Invite Accepted';
+                        // req.to = updatedUser.email;
+                        // req.user = updatedUser;
+                        // req.email ='You have succesfully accepted the Invitation to Goa-Hack team '+ updatedTeam.name+
+                        // '\n Link to team page : http://goahack.com/team/'+ updatedTeam.slug; 
+                        // next();
                       }
                     });
                   }
@@ -770,15 +785,12 @@ exports.acceptInvite = function(req, res, next) {
 exports.getTeams = function(req, res) {
   var query = Team.find();
   var key = "";
-  console.log(req.headers.keyword);
   if (req.query.keyword instanceof Array) {
     for (var i = 0; i < req.query.keyword.length; i++) {
       key = key + req.query.keyword[i] + " ";
-      console.log(key);
     };
   } else {
     key = req.headers.keyword;
-    console.log(key);
   }
 
   if (req.headers.keyword) {
@@ -792,13 +804,11 @@ exports.getTeams = function(req, res) {
     }, {
       'status': "Un-approved"
     });
-    console.log(query);
     // .skip(req.query.s)
     // .limit(req.query.l);
   };
   query.exec(function(err, teams) {
     if (err) res.send(err);
-    console.log(teams);
     res.json(teams);
   });
 };
@@ -867,7 +877,6 @@ exports.unjoinTeam = function(req, res) {
 };
 
 exports.postChat = function(req, res) {
-  console.log('hi');
   Team.findOne({
       eventSlug: req.params.eslug,
       slug: req.params.tslug
@@ -877,9 +886,6 @@ exports.postChat = function(req, res) {
       else if (!team) {
         res.status(404).send('Team not found');
       } else {
-        console.log(req.user._id);
-        console.log(req.params.description);
-        console.log(req.body.description);
         team.chat.push({
           _id: req.user._id,
           description: req.body.description
@@ -959,7 +965,6 @@ exports.deleteImagesS3 = function(req, res, next) {
         }
       });
       if (team.teamPic) {
-        console.log(team.teamPic);
         var params = {
           Bucket: 'codejedi',
           Key: team.eventSlug + team.slug
@@ -988,7 +993,7 @@ exports.uploadImagesS3 = function(req, res) {
     var data2 = _.pick(req.body, 'type'),
       uploadPath = path.normalize('/uploads'),
       file = req.files.file;
-    console.log(req.files);
+
 
     var s3Bucket = new AWS.S3({
       params: {
@@ -1005,12 +1010,10 @@ exports.uploadImagesS3 = function(req, res) {
           ACL: 'public-read',
           ContentType: file.type
         };
-        console.log(data);
         s3Bucket.putObject(data, function(err) {
           if (err) {
             res.status(500).send(err);
           } else {
-            console.log('succesfully uploaded the image!');
             var urlParams = {
               Bucket: 'codejedi',
               Key: team.eventSlug + team.slug

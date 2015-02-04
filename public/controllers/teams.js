@@ -12,7 +12,6 @@ angular.module('GoaHack')
           $scope.teams[key].searchTerm = fullName;
         });
       });
-    console.log($scope.teams);
     $scope.filterHtml = function(user) {
       return /\<(.*?)\>/.test(user.type);
     };
@@ -38,11 +37,10 @@ angular.module('GoaHack')
           type: 'warning',
           duration: 5
         });
-      //    console.log(teamName);
     };
 
-    $scope.createTeam = function(teamName) {
-      //console.log(teamName);
+    $scope.createTeam = function(teamName,className) {
+      if(teamName && className){
       //    Team.save({
       //      name: teamName,
       //      eslug: 'goa-hack'
@@ -51,9 +49,11 @@ angular.module('GoaHack')
         url: '/api/event/goa-hack/team',
         method: 'POST',
         data: {
-          name: teamName
+          name: teamName,
+          className: className
         }
-      }).success(function(data, status, headers, config) {
+      })
+      .success(function(data, status, headers, config) {
 
 
         $alert({
@@ -86,6 +86,17 @@ angular.module('GoaHack')
           duration: 5
         });
       });
+      }
+      else{
+        $alert({
+          content: "Enter Team Name And Class",
+          placement: 'right',
+          type: 'danger',
+          duration: 5
+        });
+
+      }
+      
     };
   
     $scope.memberNavigate = function(uslug){
@@ -126,3 +137,4 @@ angular.module('GoaHack').filter('filterHtml', function() {
     return result;
   };
 });
+
