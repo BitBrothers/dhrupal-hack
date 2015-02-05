@@ -735,6 +735,8 @@ section#contact {
   padding-right: 50px;
   padding-left: 50px;
   padding-top: 20px;
+  position: relative;
+  left: 7.5%;
 }
 
 .progress-items .text-center {
@@ -896,9 +898,32 @@ section#contact {
   border-color: #000;
 }
 
-.createTeamModal h3
+.createTeamModal, .createTeamModal h3, h4
 {
   text-align: center;
+}
+
+
+.create-team-modal{
+  height: auto;
+  width: auto;
+}
+
+.team-modal-class-image-div{
+  text-align: center;
+  padding: 0px;
+}
+
+.team-modal-class-image > input{ /* HIDE RADIO */
+  display:none;
+}
+.team-modal-class-image > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+  width: 110px;
+}
+.team-modal-class-image > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:2px solid #bf3431;
 }
 
 .createTeamButton
@@ -2354,31 +2379,6 @@ only screen and (min-device-pixel-ratio : 1.5) {
 }
 /*Team list css end*/
 
-//colors
-//$red: #f00;
 
-//fonz > input {
-//  visibility: hidden;
- // position: absolute;
- // + img {
- //   cursor: pointer;
- //   border: 2px solid transparent;
-  //}
-  //&:checked + img {
-  //  border: 2px solid $red;
- // }
-//}
-
-.fonz > input{ /* HIDE RADIO */
-  display:none;
-}
-.fonz > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-  width:75px;
-}
-.fonz > input:checked + img{ /* (CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-}
 
 

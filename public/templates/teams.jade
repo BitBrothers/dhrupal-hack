@@ -43,35 +43,37 @@ modal-dialog(show='modalShown', dialog-title='Team Members', height='auto', widt
           h5.modalMemberName {{member._id.profile.name}}
         
         
-modal-dialog(show='createModalShown', dialog-title='Create a Team', height='auto', width='400px')
+modal-dialog.create-team-modal(show='createModalShown', dialog-title='Create a Team')
   div.createTeamModal
-    h3 No team yet?? 
-    br
-    h3 Create one NOW!
     .row
       .col-md-12
-        input.form-control(type='text', placeholder='Enter new team name...' ng-model='teamName')
+        br
+        h3 No team yet??
+        input.form-control(type='text', placeholder=' Enter a name!' ng-model='teamName')
     .row
-      .col-md-3
-        label.fonz
+      .col-md-12
+        h4 Pick your class...
+    .row
+      .col-md-3.col-sm-6.col-xs-6.team-modal-class-image-div
+        label.team-modal-class-image
           input(type='radio', ng-model='className', value='fonz')
           |   
           img(src='https://s3-us-west-2.amazonaws.com/codejedi/events/goa-hack/goa-hackteam-image')
-      .col-md-3
-        label.fonz
+      .col-md-3.col-sm-6.col-xs-6.team-modal-class-image-div
+        label.team-modal-class-image
           input(type='radio', ng-model='className', value='jack')
           |   
           img(src='https://s3-us-west-2.amazonaws.com/codejedi/events/goa-hack/goa-hackteam-image')
-      .col-md-3
-        label.fonz
+      .col-md-3.col-sm-6.col-xs-6.team-modal-class-image-div
+        label.team-modal-class-image
           input(type='radio', ng-model='className', value='frost')
           |   
           img(src='https://s3-us-west-2.amazonaws.com/codejedi/events/goa-hack/goa-hackteam-image')
-      .col-md-3
-        label.fonz
+      .col-md-3.col-sm-6.col-xs-6.team-modal-class-image-div
+        label.team-modal-class-image
           input(type='radio', ng-model='className', value='byte')
           |   
           img(src='https://s3-us-west-2.amazonaws.com/codejedi/events/goa-hack/goa-hackteam-image')
     .row
       .col-md-12
-        button.btn.btn-md.createTeamButton(ng-click='createTeam(teamName, className)') Create!
+        button.btn.btn-lg.createTeamButton(ng-click='createTeam(teamName, className)') Create Your Team!
