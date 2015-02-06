@@ -1,6 +1,7 @@
 header
   .container
     .intro-text
+      img.intro-logo(ng-src="images/druplicon.large_.png")
       .intro-lead-in Presenting India's!
       .intro-heading Largest Hackathon
     .row(ng-show='!currentUser.profile.slug')
@@ -11,6 +12,7 @@ header
     .row(ng-show='currentUser.profile.slug')
       .col-md-12.col-sm-12.col-xs-12.joinButtons
         button.btn.btn-lg.createJoinButton(ng-click='teams()') Create/Join Team
+  .overlay
 footer
   .container
     .row
@@ -19,17 +21,11 @@ footer
       .col-md-4
         ul.list-inline.social-buttons
           li
-            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-url='http://goahack.com')
+            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-url='http://codejedi.io/drupal-hack')
               i.fa.fa-twitter
           li
-            a(href='#', socialshare='', socialshare-provider='facebook', socialshare-url='http://goahack.com')
+            a(href='#', socialshare='', socialshare-provider='facebook', socialshare-url='http://codejedi.io/drupal-hack')
               i.fa.fa-facebook
           li
-            a(href='#', socialshare='', socialshare-provider='google+', socialshare-url='http://goahack.com')
+            a(href='#', socialshare='', socialshare-provider='google+', socialshare-url='http://codejedi.io/drupal-hack')
               i.fa.fa-google-plus
-      .col-md-4
-        ul.list-inline.quicklinks
-          li
-            a(href='#') Privacy Policy
-          li
-            a(href='#') Terms of Use
