@@ -874,6 +874,58 @@ section#contact {
   top: 15px;
 }
 
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.edit-problem{
+  -webkit-transition:all ease-in 0.2s;
+  -moz-transition:all ease-in 0.2s;
+  -ms-transition:all ease-in 0.2s;
+  -o-transition:all ease-in 0.2s;
+  transition:all ease-in 0.2s;
+  height: 627px;
+  opacity: 1;
+  overflow: hidden;
+}
+
+
+
+.edit-problem.ng-hide {
+  opacity: 0;
+  height: 0;
+}
+
+.custom-file-input {
+  visibility: hidden;
+  width: 0;
+  position: relative;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  visibility: visible;
+  position: absolute;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .membersNumber a {
   font-family: Humanist777BT;
   font-size: 18px;
@@ -978,6 +1030,19 @@ section#contact {
 .nav.navbar-nav{
   background: transparent !important;
 }
+.ng-modal {
+  -webkit-transition:all linear 0.2s;
+  -moz-transition:all linear 0.2s;
+  -ms-transition:all linear 0.2s;
+  -o-transition:all linear 0.2s;
+  transition:all linear 0.2s;
+  opacity: 1;
+}
+
+.ng-modal.ng-hide {
+  opacity: 0;
+}
+
 .ng-modal-overlay {
   /* A dark translucent div that covers the whole screen */
   position: fixed;
@@ -989,6 +1054,8 @@ section#contact {
   background-color: #000000;
   opacity: 0.8;
 }
+
+
 
 .ng-modal-dialog {
   /* A centered div above the overlay with a box shadow. */
@@ -1155,7 +1222,7 @@ section#contact {
   margin-right: 10px;
   cursor: pointer;
   height: 50px;
-  background: #2b2b2b;
+  background: #bf3431;
   padding-bottom: 8px;
 }
 

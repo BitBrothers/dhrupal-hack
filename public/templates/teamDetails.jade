@@ -7,7 +7,6 @@ include partials/progress-bar.jade
         img(ng-src='{{team.teamPic}}')
       br
       div.chooseFilesButton
-        input#chooseFilesButtons(type='file', nv-file-select="", uploader="uploader", multiple)
       .col-md-7.col-sm-6.col-xs-12.teamName
         h2 {{name}}
       .col-md-3.col-sm-2.col-xs-1.lock
@@ -56,7 +55,7 @@ include partials/progress-bar.jade
     span.tagSpan(ng-repeat='tag in team.problemStatement.tags' ng-show='tag.text') {{tag.text}}
     span.tagSpan(ng-repeat='tag in team.problemStatement.tags' ng-hide='tag.text') {{tag}}    
 
-.row.customRemoveMargin(ng-show='editStatus')
+.row.customRemoveMargin.edit-problem(ng-show='editStatus')
   div(column='col-md-10 col-md-offset-1')
     form.form-horizontal.col-md-10.col-md-offset-1
       .form-group
@@ -67,8 +66,6 @@ include partials/progress-bar.jade
         label.col-sm-2.control-label.desc Description: 
         .col-md-12.col-sm-12.col-xs-12
           text-angular(ng-model='problemDescription', ta-toolbar='[["h3"],["bold","italics","underline"]]')
-
-.row.customRemoveMargin(ng-show='editStatus')
   .col-md-10.col-md-offset-1.custom-remove-padding
     form.form-horizontal.col-md-12
       .form-group

@@ -248,115 +248,115 @@ angular.module('GoaHack')
 
       
   /*angular-file-upload start*/
-      $scope.imageCrop = false;
-      $scope.item 
+      // $scope.imageCrop = false;
+      // $scope.item 
 
-      // FILTERS
+      // // FILTERS
 
-      uploader.filters.push({
-          name: 'imageFilter',
-          fn: function(item /*{File|FileLikeObject}*/, options) {
-            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-            if ('|jpg|png|jpeg|bmp|gif|'.indexOf(type) == -1) {
-              $alert({
-                content: 'Please select an image file.',
-                placement: 'right',
-                type: 'danger',
-                duration: 5
-              });
-              return false;
-            };
-            if (item.size > 500000) {
-              $alert({
-                content: 'Image cannot be more than 500KB',
-                placement: 'right',
-                type: 'danger',
-                duration: 5
-              });
-              return false;
-            }
-            return true;
-          }
-      });
+      // uploader.filters.push({
+      //     name: 'imageFilter',
+      //     fn: function(item /*{File|FileLikeObject}*/, options) {
+      //       var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+      //       if ('|jpg|png|jpeg|bmp|gif|'.indexOf(type) == -1) {
+      //         $alert({
+      //           content: 'Please select an image file.',
+      //           placement: 'right',
+      //           type: 'danger',
+      //           duration: 5
+      //         });
+      //         return false;
+      //       };
+      //       if (item.size > 500000) {
+      //         $alert({
+      //           content: 'Image cannot be more than 500KB',
+      //           placement: 'right',
+      //           type: 'danger',
+      //           duration: 5
+      //         });
+      //         return false;
+      //       }
+      //       return true;
+      //     }
+      // });
 
-      // CALLBACKS
+      // // CALLBACKS
 
-      /**
-       * Show preview with cropping
-       */
-      uploader.onAfterAddingFile = function(item) {
-        // $scope.croppedImage = '';
-        item.croppedImage = '';
-        var reader = new FileReader();
-        reader.onload = function(event) {
-          $scope.$apply(function(){
-            item.image = event.target.result;
-          });
-        };
-        reader.readAsDataURL(item._file);
-    };
+      // /**
+      //  * Show preview with cropping
+      //  */
+      // uploader.onAfterAddingFile = function(item) {
+      //   // $scope.croppedImage = '';
+    //     item.croppedImage = '';
+    //     var reader = new FileReader();
+    //     reader.onload = function(event) {
+    //       $scope.$apply(function(){
+    //         item.image = event.target.result;
+    //       });
+    //     };
+    //     reader.readAsDataURL(item._file);
+    // };
  
-    /**
-     * Upload Blob (cropped image) instead of file.
-     * @see
-     *   https://developer.mozilla.org/en-US/docs/Web/API/FormData
-     *   https://github.com/nervgh/angular-file-upload/issues/208
-     */
-    uploader.onBeforeUploadItem = function(item) {
-      var blob = dataURItoBlob(item.croppedImage);
-      item._file = blob;
-    };
+    // /**
+    //  * Upload Blob (cropped image) instead of file.
+    //  * @see
+    //  *   https://developer.mozilla.org/en-US/docs/Web/API/FormData
+    //  *   https://github.com/nervgh/angular-file-upload/issues/208
+    //  */
+    // uploader.onBeforeUploadItem = function(item) {
+    //   var blob = dataURItoBlob(item.croppedImage);
+    //   item._file = blob;
+    // };
  
-    /**
-     * Converts data uri to Blob. Necessary for uploading.
-     * @see
-     *   http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
-     * @param  {String} dataURI
-     * @return {Blob}
-     */
-    var dataURItoBlob = function(dataURI) {
-      var binary = atob(dataURI.split(',')[1]);
-      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-      var array = [];
-      for(var i = 0; i < binary.length; i++) {
-        array.push(binary.charCodeAt(i));
-      }
-      return new Blob([new Uint8Array(array)], {type: mimeString});
-    };
+    // *
+    //  * Converts data uri to Blob. Necessary for uploading.
+    //  * @see
+    //  *   http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
+    //  * @param  {String} dataURI
+    //  * @return {Blob}
+     
+    // var dataURItoBlob = function(dataURI) {
+    //   var binary = atob(dataURI.split(',')[1]);
+    //   var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    //   var array = [];
+    //   for(var i = 0; i < binary.length; i++) {
+    //     array.push(binary.charCodeAt(i));
+    //   }
+    //   return new Blob([new Uint8Array(array)], {type: mimeString});
+    // };
  
-    uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-    };
-    uploader.onAfterAddingAll = function(addedFileItems) {
-        $scope.imageCrop = !$scope.imageCrop;
-    };
-    uploader.onProgressItem = function(fileItem, progress) {
-    };
-    uploader.onProgressAll = function(progress) {
-    };
-    uploader.onSuccessItem = function(fileItem, response, status, headers) {
-          $alert({
-          content: "Your image was successfuly updated.",
-          placement: 'right',
-          type: 'success',
-          duration: 5
-        });
-        $scope.imageCrop = !$scope.imageCrop;
-        $scope.team.teamPic = response.team.teamPic + '?decache='+Math.floor(Math.random()*1000);
-      };
-      uploader.onErrorItem = function(fileItem, response, status, headers) {
-        $alert({
-          content: "There was an error please try again later.",
-          placement: 'right',
-          type: 'danger',
-          duration: 5
-        });
-      };
-      uploader.onCancelItem = function(fileItem, response, status, headers) {
-      };
-      uploader.onCompleteItem = function(fileItem, response, status, headers) {
-      };
-      uploader.onCompleteAll = function() {
-      };
+    // uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+    // };
+    // uploader.onAfterAddingAll = function(addedFileItems) {
+    //     $scope.imageCrop = !$scope.imageCrop;
+    // };
+    // uploader.onProgressItem = function(fileItem, progress) {
+    // };
+    // uploader.onProgressAll = function(progress) {
+    // };
+    // uploader.onSuccessItem = function(fileItem, response, status, headers) {
+    //       $alert({
+    //       content: "Your image was successfuly updated.",
+    //       placement: 'right',
+    //       type: 'success',
+    //       duration: 5
+    //     });
+    //     $scope.imageCrop = !$scope.imageCrop;
+    //     $scope.team.teamPic = response.team.teamPic + '?decache='+Math.floor(Math.random()*1000);
+    //   };
+    //   uploader.onErrorItem = function(fileItem, response, status, headers) {
+    //     $alert({
+    //       content: "There was an error please try again later.",
+    //       placement: 'right',
+    //       type: 'danger',
+    //       duration: 5
+    //     });
+    //   };
+    //   uploader.onCancelItem = function(fileItem, response, status, headers) {
+    //   };
+    //   uploader.onCompleteItem = function(fileItem, response, status, headers) {
+    //   };
+    //   uploader.onCompleteAll = function() {
+    //   };
 
 
 
@@ -560,10 +560,6 @@ angular.module('GoaHack')
         });
       };
   }
-  
-  var root = document.querySelector('#chooseFilesButtons').createShadowRoot();
-root.innerHTML = '<style>button{ background: #2b2b2b;padding: 5px;color: #e8e8e8;font-family: Humanist777BT;border-radius: 5px 0px 0px 5px;border: 1px solid #2b2b2b; cursor: pointer;width: 90px;}</style>' + 
-                 '<button>Choose File</button>';
 });
 
 
