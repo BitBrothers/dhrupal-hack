@@ -4,6 +4,7 @@ angular.module('GoaHack')
       Auth.signup({
         name: $scope.displayName,
         email: $scope.email,
+        phone: $scope.phone,
         password: $scope.password
       });
     };

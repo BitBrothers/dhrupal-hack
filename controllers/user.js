@@ -67,6 +67,7 @@ exports.signup = function(req, res, next) {
     });
     user.profile.email = req.body.email;
     user.profile.name = req.body.name;
+    user.profile.phone = req.body.phone;
     user.profile.picture = 'https://s3-us-west-2.amazonaws.com/codejedi/users/default-user70';
     user.save(function(err, user, numberAffected) {
         if (err) res.send(err);
@@ -282,6 +283,7 @@ exports.updateProfile = function(req, res) {
         else {
             user.profile.name = req.body.name;
             user.profile.nameFull = req.body.nameFull;
+            user.profile.phone = req.body.phone;
             user.profile.location = req.body.location;
             user.profile.website = req.body.website;
             user.profile.occupation = req.body.occupation;

@@ -18,6 +18,9 @@ include partials/progress-bar.jade
           label.col-sm-2.control-label.updateProfileLabel(for='full') Full Name: 
           .col-sm-10
             input.form-control.updateProfileInputBox(ng-model='user.profile.nameFull', type='text')
+          label.col-sm-2.control-label.updateProfileLabel(for='full') Phone: 
+          .col-sm-10
+            input.form-control.updateProfileInputBox(ng-model='user.profile.phone', type='tel')
           label.col-sm-2.control-label.updateProfileLabel(for='company') Company: 
           .col-sm-10
             input.form-control.updateProfileInputBox(ng-model='user.profile.employers', type='text')

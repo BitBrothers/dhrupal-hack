@@ -21,6 +21,7 @@ var userSchema = new mongoose.Schema({
     slug: {type: String},
     name: { type: String, default: '' },
     nameFull: { type: String, default: '' },
+    phone: Number,
     gender: { type: String, default: '' },
     location: { type: String, default: '' },
     website: { type: String, default: '' },

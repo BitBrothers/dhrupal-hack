@@ -38,6 +38,7 @@ angular.module('GoaHack')
         employers: $scope.user.profile.employers,
         location: $scope.user.profile.location,
         website: $scope.user.profile.website,
+        phone: $scope.user.profile.phone,
         experience: $scope.user.profile.experience,
         occupation: $scope.user.profile.occupation,
         skills: $scope.user.profile.skills

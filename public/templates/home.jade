@@ -1,8 +1,8 @@
 header
   .container
     .intro-text
-      img.intro-logo(ng-src="images/druplicon.large_.png")
-      .intro-lead-in Presenting India's!
+      //img.intro-logo(ng-src="images/druplicon.large_.png")
+      .intro-lead-in Presenting Manglore's!
       .intro-heading Largest Hackathon
     .row(ng-show='!currentUser.profile.slug')
       .col-md-6.col-sm-6.col-xs-12.joinButtons
@@ -13,6 +13,126 @@ header
       .col-md-12.col-sm-12.col-xs-12.joinButtons
         button.btn.btn-lg.createJoinButton(ng-click='teams()') Create/Join Team
   .overlay
+
+// About Section
+section#schedule
+  .container
+    .row
+      .col-lg-12.text-center
+        h2.section-heading MangloreHack
+        h3.section-subheading.text-muted Manglore's Largest Hackathon.
+    .row
+      .col-md-12
+        p.text-muted
+          | Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
+          | has been the industry's standard dummy text ever since the 1500s, when an unknown
+          | printer took a galley of type and scrambled it to make a type specimen book. It has
+          | survived not only five centuries, but also the leap into electronic typesetting, remaining
+          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          | PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
+          | has been the industry's standard dummy text ever since the 1500s, when an unknown
+          | printer took a galley of type and scrambled it to make a type specimen book. It has
+          | survived not only five centuries, but also the leap into electronic typesetting, remaining
+          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          | PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
+          | has been the industry's standard dummy text ever since the 1500s, when an unknown
+          | printer took a galley of type and scrambled it to make a type specimen book. It has
+          | survived not only five centuries, but also the leap into electronic typesetting, remaining
+          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          | PageMaker including versions of Lorem Ipsum.
+
+// Schedule Section
+section#schedule
+  .container
+    .row
+      .col-lg-12.text-center
+        h2.section-heading Schedule
+    .row
+      table(border='0', cellpadding='0', cellspacing='0')
+        tbody
+          tr.days
+            th
+            |                                     
+            th Day One
+            |                                     
+            th Day Two
+            |                                     
+            th Day Three
+          |                                 
+          tr
+            td.time 9:00 - 10:00 am
+            |                                     
+            td.cs335.blue(data-tooltip='HTML5/CSS3') HTML5/CSS3
+            |                                     
+            td.cs426.purple(data-tooltip='Nodejs/Mongodb') Nodejs/Mongodb
+            |                                     
+            td.cs240.orange(data-tooltip='Cloud Architecture') Cloud Architecture
+          |                                 
+          tr
+            td.time 10:00 - 11:00 am
+            |                                     
+            td.cs335.blue(data-tooltip='HTML5/CSS3') HTML5/CSS3
+            |                                     
+            td.cs335.blue.lab(data-tooltip='Expressjs/Sailjs') Expressjs/Sailjs
+            |                                     
+            td.md352.green(data-tooltip='Amazon Web Services') Amazon Web Services
+          |                                 
+          tr
+            td.time 1:00 - 12:00 pm
+            |                                     
+            td.cs426.purple(data-tooltip='JavaScript') JavaScript
+            |                                     
+            td.cs335.blue.lab(data-tooltip='Login Social Api') Login Social Api
+            |                                     
+            td.md352.green(data-tooltip='Amazon Web Services') Amazon Web Services
+          |                                 
+          tr
+            td.time 12:00 - 1:00 pm
+            |                                     
+            td.md352.green(data-tooltip='Git & Github') Git &amp; Github
+            |                                     
+            td.md313.red(data-tooltip='Angular.js') Angular.js
+            |                                     
+            td.cs240.orange(data-tooltip='IBM BlueMix') IBM BlueMix
+          |                                 
+          tr
+            td.time 1:00 - 2:00 pm
+            |                                     
+            td.md303.navy(data-tooltip='Jade/Less/SASS') Jade/Less/SASS
+            |                                     
+            td.md313.red(data-tooltip='Angular.js') Angular.js
+            |                                     
+            td.cs240.orange(data-tooltip='IBM BlueMix') IBM BlueMix
+          |                                 
+          tr
+            td.time 2:00 - 3:00 pm
+            |                                     
+            td.md313.red(data-tooltip='Projects') Projects
+            |                                     
+            td.cs240.orange(data-tooltip='Projects') Projects
+            |                                     
+            td.cs426.purple(data-tooltip='Projects') Projects
+
+// Clients Aside
+aside.clients
+  .container
+    .row
+      .col-md-3.col-sm-6
+        a(href='#')
+          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+      .col-md-3.col-sm-6
+        a(href='#')
+          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+      .col-md-3.col-sm-6
+        a(href='#')
+          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+      .col-md-3.col-sm-6
+        a(href='#')
+          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+
 footer
   .container
     .row
@@ -21,11 +141,11 @@ footer
       .col-md-4
         ul.list-inline.social-buttons
           li
-            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-url='http://codejedi.io/drupal-hack')
+            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-url='http://manglorehack.com')
               i.fa.fa-twitter
           li
-            a(href='#', socialshare='', socialshare-provider='facebook', socialshare-url='http://codejedi.io/drupal-hack')
+            a(href='#', socialshare='', socialshare-provider='facebook', socialshare-url='http://manglorehack.com')
               i.fa.fa-facebook
           li
-            a(href='#', socialshare='', socialshare-provider='google+', socialshare-url='http://codejedi.io/drupal-hack')
+            a(href='#', socialshare='', socialshare-provider='google+', socialshare-url='http://manglorehack.com')
               i.fa.fa-google-plus
