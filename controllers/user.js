@@ -67,7 +67,10 @@ exports.signup = function(req, res, next) {
     });
     user.profile.email = req.body.email;
     user.profile.name = req.body.name;
-    user.profile.phone = req.body.phone;
+    if (isNumber(req.body.phone))
+        user.profile.phone = req.body.phone;
+    else
+        return res.status(400).send("Phone number not valid");
     user.profile.picture = 'https://s3-us-west-2.amazonaws.com/codejedi/users/default-user70';
     user.save(function(err, user, numberAffected) {
         if (err) res.send(err);
@@ -283,7 +286,10 @@ exports.updateProfile = function(req, res) {
         else {
             user.profile.name = req.body.name;
             user.profile.nameFull = req.body.nameFull;
-            user.profile.phone = req.body.phone;
+            if (isNumber(req.body.phone))
+                user.profile.phone = req.body.phone;
+            else
+                return res.status(400).send("Phone number not valid");
             user.profile.location = req.body.location;
             user.profile.website = req.body.website;
             user.profile.occupation = req.body.occupation;
@@ -297,9 +303,11 @@ exports.updateProfile = function(req, res) {
 
             user.save(function(err) {
                 if (err) res.send(err);
-                res.json({
-                    message: 'User updTED'
-                });
+                else {
+                    res.json({
+                        message: 'User updTED'
+                    });
+                }
             });
         }
 
@@ -392,3 +400,7 @@ exports.uploadImagesS3 = function(req, res) {
 
     });
 };
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n) && n > -1;
+}
