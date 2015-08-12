@@ -1,9 +1,12 @@
 header
   .container
     .intro-text
-      //img.intro-logo(ng-src="images/druplicon.large_.png")
-      .intro-lead-in Presenting Manglore's!
-      .intro-heading Largest Hackathon
+      img.intro-logo(ng-src="images/codegurukul.png")
+      span 
+        | and
+      img.intro-logo(ng-src="images/startupmitra_light.svg")
+      .intro-lead-in Presents
+      .intro-heading MangloreHack
     .row(ng-show='!currentUser.profile.slug')
       .col-md-6.col-sm-6.col-xs-12.joinButtons
         button.btn.btn-lg.regButton(ng-click='register()') Register
@@ -58,63 +61,78 @@ section#schedule
             |                                     
             th Day One
             |                                     
-            th Day Two
+            th 
             |                                     
-            th Day Three
+            th Day Two
           |                                 
           tr
+            td.time 11:00 - 12:00 am
+            |                                     
+            td.cs335.orange(data-tooltip='Register on our online tool') Registration
+            |                                     
+            td.time 00:00 - 5:00 am
+            |                                     
+            td.cs240.orange(data-tooltip='The Hackathon continues') Hackathon
+          |                                 
+          tr
+            td.time 12:00 - 3:00 pm
+            |                                     
+            td.cs335.blue Hackathon starts
+            |                                     
+            td.time 5:00 - 6:00 am
+            |                                     
+            td.md352.green(data-tooltip='Recharge and GO!') High Tea
+          |                                 
+          tr
+            td.time 3:00 - 4:00 pm
+            |                                     
+            td.cs426.green(data-tooltip='Food') Meal
+            |                                     
+            td.time 6:00 - 9:00 am
+            |                                     
+            td.md352.blue(data-tooltip='The final hours') Hackathon
+          |                                 
+          tr
+            td.time 4:00 - 8:00 pm
+            |                                     
+            td.md352.blue Hackathon continues
+            |                                     
             td.time 9:00 - 10:00 am
             |                                     
-            td.cs335.blue(data-tooltip='HTML5/CSS3') HTML5/CSS3
-            |                                     
-            td.cs426.purple(data-tooltip='Nodejs/Mongodb') Nodejs/Mongodb
-            |                                     
-            td.cs240.orange(data-tooltip='Cloud Architecture') Cloud Architecture
+            td.cs240.green Breakfast
           |                                 
           tr
-            td.time 10:00 - 11:00 am
+            td.time 8:00 - 9:00 pm
             |                                     
-            td.cs335.blue(data-tooltip='HTML5/CSS3') HTML5/CSS3
+            td.md303.green(data-tooltip='Recharge') Tea/Coffee and mini-meal
             |                                     
-            td.cs335.blue.lab(data-tooltip='Expressjs/Sailjs') Expressjs/Sailjs
+            td.time 10:00 - 12:00 am
             |                                     
-            td.md352.green(data-tooltip='Amazon Web Services') Amazon Web Services
+            td.cs240.blue(data-tooltip='Almost there ...') Hackathon
           |                                 
           tr
-            td.time 1:00 - 12:00 pm
+            td.time 9:00 - 12:00 pm
             |                                     
-            td.cs426.purple(data-tooltip='JavaScript') JavaScript
+            td.md313.blue(data-tooltip='Hack away!') Hackathon
             |                                     
-            td.cs335.blue.lab(data-tooltip='Login Social Api') Login Social Api
+            td.time 12:00 - 1:30 pm
             |                                     
-            td.md352.green(data-tooltip='Amazon Web Services') Amazon Web Services
+            td.cs426.purple(data-tooltip="It's judgement time!") Project presentation
           |                                 
           tr
-            td.time 12:00 - 1:00 pm
+            td.time 12:00 - 1:00 am
             |                                     
-            td.md352.green(data-tooltip='Git & Github') Git &amp; Github
+            td.md313.green Mid-night meal
             |                                     
-            td.md313.red(data-tooltip='Angular.js') Angular.js
+            td.time 2:00 pm
             |                                     
-            td.cs240.orange(data-tooltip='IBM BlueMix') IBM BlueMix
+            td.md313.red(data-tooltip='Bye!') The End
           |                                 
           tr
-            td.time 1:00 - 2:00 pm
+            td.time 10:00 - 12:00 pm
             |                                     
-            td.md303.navy(data-tooltip='Jade/Less/SASS') Jade/Less/SASS
-            |                                     
-            td.md313.red(data-tooltip='Angular.js') Angular.js
-            |                                     
-            td.cs240.orange(data-tooltip='IBM BlueMix') IBM BlueMix
-          |                                 
-          tr
-            td.time 2:00 - 3:00 pm
-            |                                     
-            td.md313.red(data-tooltip='Projects') Projects
-            |                                     
-            td.cs240.orange(data-tooltip='Projects') Projects
-            |                                     
-            td.cs426.purple(data-tooltip='Projects') Projects
+            td.md313.blue(data-tooltip='Hack all night') Hackathon
+            
 
 // Clients Aside
 aside.clients
@@ -122,26 +140,26 @@ aside.clients
     .row
       .col-md-3.col-sm-6
         a(href='#')
-          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+          img.img-responsive.img-centered(ng-src='images/startupmitra.png', alt='GDG')
       .col-md-3.col-sm-6
         a(href='#')
-          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+          img.img-responsive.img-centered(ng-src='images/kcci.jpg', alt='KCCI')
       .col-md-3.col-sm-6
         a(href='#')
-          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+          img.img-responsive.img-centered(ng-src='images/gdg.svg', alt='StartupMitra')
       .col-md-3.col-sm-6
-        a(href='#')
-          img.img-responsive.img-centered(src='http://img4.wikia.nocookie.net/__cb20111223143457/admintools/images/7/70/200px-Twitter_logo_svg.png', alt='')
+        a(href='http://codegurukul.com')
+          img.img-responsive.img-centered(ng-src='images/codegurukul.png', alt='Codegurukul')
 
 footer
   .container
     .row
       .col-md-4
-        span.copyright Copyright © codejedi.io 2014
+        span.copyright Copyright © codegurukul.com 2015
       .col-md-4
         ul.list-inline.social-buttons
           li
-            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-url='http://manglorehack.com')
+            a(href='#', socialshare='', socialshare-provider='twitter', socialshare-text='Join MangloreHack! Follow us @codegurukul')
               i.fa.fa-twitter
           li
             a(href='#', socialshare='', socialshare-provider='facebook', socialshare-url='http://manglorehack.com')
