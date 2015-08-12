@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('User', function($resource, $window) {
     return $resource('/api/user/:uslug', null,
     {

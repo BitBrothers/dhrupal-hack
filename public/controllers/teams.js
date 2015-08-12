@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('TeamsCtrl', function($scope, Teams, Team, $alert, $location, $http, $routeParams, $window, $rootScope) {
     $scope.teams = Teams.query({
         eslug: "goa-hack"
@@ -127,7 +127,7 @@ angular.module('GoaHack')
   
 });
     
-angular.module('GoaHack').filter('filterHtml', function() {
+angular.module('MangloreHack').filter('filterHtml', function() {
   return function(input) {
     if (!input) {
       return input;

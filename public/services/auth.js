@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Auth', function($http, $location, $rootScope, $alert, $window) {
     var token = $window.localStorage.token;
     var user = $window.localStorage.user;

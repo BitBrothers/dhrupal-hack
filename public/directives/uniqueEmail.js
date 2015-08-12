@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .directive('uniqueEmail', function($http) {
     return {
       restrict: 'A',

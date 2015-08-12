@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
 .directive('modalDialog', function() {
   return {
     restrict: 'E',

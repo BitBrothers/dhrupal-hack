@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Apply', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/apply', null,
     {
@@ -7,7 +7,7 @@ angular.module('GoaHack')
   });
 
 
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Approve', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/approval', null,
     {
@@ -15,7 +15,7 @@ angular.module('GoaHack')
     });
   });
 
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Invite', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/invite', null,
     {
@@ -23,7 +23,7 @@ angular.module('GoaHack')
     });
   });
 
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Accept', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/accept', null,
     {
@@ -31,7 +31,7 @@ angular.module('GoaHack')
     });
   });
 
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Unjoin', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/unjoin', null,
     {
@@ -39,7 +39,7 @@ angular.module('GoaHack')
     });
   });
 
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .factory('Remove', function($resource) {
     return $resource('/api/event/:eslug/team/:tslug/remove', null,
     {

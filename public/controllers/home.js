@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('HomeCtrl', function($scope, $alert, $location, $http, $rootScope) {
 
   $scope.register = function (){

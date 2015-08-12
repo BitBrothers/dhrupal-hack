@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('SignupCtrl', function($scope, Auth) {
     $scope.signup = function() {
       Auth.signup({

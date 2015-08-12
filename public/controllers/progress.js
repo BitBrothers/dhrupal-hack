@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('ProgressCtrl', function($scope, $alert, $location, $http, Progress, $rootScope) {
   $scope.ready;
   if($rootScope.currentUser){

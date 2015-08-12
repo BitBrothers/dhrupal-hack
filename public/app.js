@@ -1,4 +1,4 @@
-angular.module('GoaHack', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimate',
+angular.module('MangloreHack', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimate',
                            'mgcrea.ngStrap','ngTagsInput','textAngular','truncate',
                            'angularFileUpload', 'ngProgress', '720kb.socialshare', 'ngImgCrop'])
   .config(function ($routeProvider, $locationProvider) {

@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .directive('passwordStrength', function() {
     return {
       restrict: 'A',

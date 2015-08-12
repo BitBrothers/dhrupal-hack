@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('UpdateProfileCtrl', function($scope, $rootScope, User, $alert, $location, $routeParams, 
     FileUploader, ngProgress, $window) {
 

@@ -1,4 +1,4 @@
-angular.module('GoaHack')
+angular.module('MangloreHack')
   .controller('TeamDetailsCtrl', function($scope, $alert, $location, $http, $routeParams, FileUploader,
     Team, User, Project, $rootScope, $window, Apply, Invite, Approve, Accept, Unjoin, Remove, ngProgress) {
     
