@@ -378,7 +378,7 @@ header {
       line-height: 22px;
     }
     .intro-heading {
-      margin-bottom: 25px;
+      margin-bottom: 0px;
       text-transform: uppercase;
       font-family: $font_5, $font_1, $font_2, $font_3, $font_4;
       font-size: 50px;
@@ -403,7 +403,7 @@ header {
 
 @media (min-width:768px) {
   header .intro-text {
-    padding-top: 300px;
+    padding-top: 190px;
 //    padding-bottom: 200px;
     img {
       width: 350px;
@@ -420,7 +420,7 @@ header {
       line-height: 40px;
     }
     .intro-heading {
-      margin-bottom: 50px;
+      margin-bottom: 0px;
       text-transform: uppercase;
       font-family: $font_5, $font_1, $font_2, $font_3, $font_4;
       font-size: 75px;
@@ -553,6 +553,13 @@ footer {
     line-height: 40px;
   }
 }
+
+section#map {
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?center=12.8632664,74.8332189&zoom=14&size=1000x1000');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
 section#contact {
   background-color: $color_log_cabin_approx;
   background-image: url(../images/map-image.png);

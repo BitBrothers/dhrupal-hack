@@ -7,6 +7,11 @@ header
       img.intro-logo(ng-src="images/startupmitra_light.svg")
       .intro-lead-in Presents
       .intro-heading MangloreHack
+      p [Campus Edition]
+      span at
+      .intro-lead-in Kanara Chamber of Commerce & Industry
+      span on
+      .intro-lead-in 26th and 27th September 2015
     .row(ng-show='!currentUser.profile.slug')
       .col-md-6.col-sm-6.col-xs-12.joinButtons
         button.btn.btn-lg.regButton(ng-click='register()') Register
@@ -22,30 +27,22 @@ section#schedule
   .container
     .row
       .col-lg-12.text-center
-        h2.section-heading MangloreHack
-        h3.section-subheading.text-muted Manglore's Largest Hackathon.
+        h2.section-heading MangloreHack [Campus Hack]
+        h3.section-subheading.text-muted Manglore's Largest Campus Hackathon.
     .row
       .col-md-12
         p.text-muted
-          | Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
-          | has been the industry's standard dummy text ever since the 1500s, when an unknown
-          | printer took a galley of type and scrambled it to make a type specimen book. It has
-          | survived not only five centuries, but also the leap into electronic typesetting, remaining
-          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          | PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
-          | has been the industry's standard dummy text ever since the 1500s, when an unknown
-          | printer took a galley of type and scrambled it to make a type specimen book. It has
-          | survived not only five centuries, but also the leap into electronic typesetting, remaining
-          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          | PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum
-          | has been the industry's standard dummy text ever since the 1500s, when an unknown
-          | printer took a galley of type and scrambled it to make a type specimen book. It has
-          | survived not only five centuries, but also the leap into electronic typesetting, remaining
-          | essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-          | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          | PageMaker including versions of Lorem Ipsum.
+          | In the context of a hackathon, the word "hack" is used to describe how multiple technologies can be used together 
+          | in a new and innovative way. Teams of up to four people spend the weekend working on innovative software and hardware 
+          | solutions to real-world problems. These projects range in platform and application, including elements of web development, 
+          | mobile applications, drones, and more. However, many times the most important aspect of a hackathon is the community it 
+          | generates and skills that inexperienced hackers walk away with.
+          | Mangalore Hack CampusHack aims to federate the next generation of hackers for the Mangalore innovation community.
+          | Co-organized by Codegurukul and Startup Mitra, and with a board of advisors which includes educators, technologists, and entrepreneurs, 
+          | Mangalore Hack CampusHack organizes the Fellows program and student ‘hackathons’ during the school year in order to create 
+          | and empower a community of student-technologists.
+          | Mangalore Hack CampusHack organizes once-a-semester campus ‘hackathons': 24-hour coding events in which Mangalore startups present their technologies and students build original applications based on them. Winning teams have presented at the Codegurukul Meetup. Sign up for the Mangalore Hack news for announcements about how to get involved and visit our Hackathon page.
+
 
 // Schedule Section
 section#schedule
@@ -150,6 +147,12 @@ aside.clients
       .col-md-3.col-sm-6
         a(href='http://codegurukul.com')
           img.img-responsive.img-centered(ng-src='images/codegurukul.png', alt='Codegurukul')
+
+section#map
+  .container
+    .row
+      .col-lg-12
+        div#map-canvas
 
 footer
   .container
