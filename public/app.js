@@ -5,7 +5,7 @@ angular.module('MangloreHack', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimat
     $locationProvider.html5Mode(true);
 
     $routeProvider
-      .when('/', {
+      .when('/campushack', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       })
@@ -44,7 +44,7 @@ angular.module('MangloreHack', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimat
         controller: 'TeamsCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/campushack'
       });
   })
   .config(function ($httpProvider) {
